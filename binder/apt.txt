@@ -4,4 +4,4 @@ nano
 emacs
 man
 htop
-top
+
