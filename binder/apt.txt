@@ -1,0 +1,8 @@
+tree
+vim
+nano
+emacs
+man
+htop
+top
+awk
