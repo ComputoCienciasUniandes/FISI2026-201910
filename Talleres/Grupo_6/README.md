@@ -31,7 +31,7 @@ Here you can find presentations, codes and additional material for the course.
 ## Some links of interest
 The videos can be found on this [Link](https://www.youtube.com/playlist?list=PLHQtzvthdVM_MGC9dPFKe4hPAwBd_7RJ3)
 
-The repository for all the groups of the course can be found [Link](https://github.com/ComputoCienciasUniandes/FISI2026-201910)
+The repository of the course [Link](https://github.com/jmsevillam/Herramientas-Computacionales-UniAndes)
 
 ## For further Information
 
