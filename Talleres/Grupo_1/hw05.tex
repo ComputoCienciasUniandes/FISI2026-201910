@@ -1,0 +1,201 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+ 
+\usepackage{listings}
+\usepackage{color}
+ 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\title{Tarea 05}
+\author{fl.gomez10 at uniandes.edu.co}
+%\date{March 2019}
+
+\begin{document}
+
+\maketitle
+
+\section*{Entrega}
+En un archivo comprimido .tar antes de finalizar la clase. 
+
+\section*{Ejercicio 1 (50 puntos)}
+
+En el archivo \texttt{ejercicio01.py} vamos a trabajar el problema de objetos 
+celestes recorriendo el sistema solar. Este problema está basado en el vídeo
+de Programación Oientada a Objetos en Python.
+
+
+Vamos calcular la órbita de la Tierra 
+a partir de la posición y la velocidad inicial. Para simplificar el problema 
+vamos a trabajar en dos dimensiones. No todos los cuerpos en el sistema solar 
+se mueven en el mismo plano, pero para esta tarea no será relevante estudiar 
+esto en detalle.
+
+Generalmente en aplicaciones de física se trabaja con las unidades del sistema
+internacional (metro, kilogramo, segundo), sin embargo en este problema tenemos
+masas de varias veces millones de toneladas, distancias de miles de millones de 
+kilómetros y tiempos muy largos (meses y años). Así que adoptaremos las 
+siguientes unidades:
+
+
+\begin{itemize}
+    \item Unidad astronómica de distancia (Distancia Tierra-Sol):  
+    $ 1 \mathrm{a.u.} \sim 1.45 \times 10 ^8\mathrm{km}$
+    \item Unidad de tiempo: $1 \mathrm{yr} \sim 3.15 \times 10^7 \mathrm{s}$
+    \item Unidad de Masa (Masa Solar): $1 M_{\odot} \sim 333000$ Masas terrestres
+     $\sim 2 \times 10^{30} \mathrm{kg}$
+\end{itemize}
+
+Con esto, la velocidad que tiene la Tierra en su traslación alrededor del Sol es
+de $6.28 \mathrm{u.a./yr}$ (perímetro del "círculo" sobre el periodo de órbita, 
+unos $29.8 \mathrm{km/s}$.)
+
+La constante de gravitación $G$ queda:
+\[ G = 39.48   \frac{\mathrm{u.a.}^3}{ \mathrm{yr} ^ 2  M_\odot }\]
+
+\subsection*{a. Inicia atributos (5 pts)}
+Siguiendo el ejemplo del vídeo, vamos a crear una clase llamada CuerpoCeleste con 
+los siguientes atributos:
+\begin{itemize}
+    \item $x$, $y$: posición en unidades astronómicas
+    \item $v_x$, $v_y$: velocidad en unidades astronómicas por año
+    \item $M$: masa en masas solares
+    \item $F_x$, $F_y$: Fuerza gravitacional que actúa sobre el objeto. En masas
+    solares por unidad astronómica sobre año al cuadrado. 
+\end{itemize}
+
+\subsection*{b. Calcula Fuerza (30 pts)}
+
+Implementar un método llamado ``calculeFuerza'' que calcule la fuerza de
+atracción gravitacional que experimenta el cuerpo celeste debido al Sol. 
+Este método va a 
+cambiar los valores de $F_x$ y $F_y$.
+
+La fuerza gravitacional que experimenta el cuerpo 1 debido al cuerpo 2 se puede
+calcular como:
+\[ \vec{F}_{1,2} = - G \frac{M_1 \times{M_2}}{R^2} \hat{r}_{2,1}\]
+con $\hat{r}_{2,1}$ el vector unitario que va de 2 hacia 1.
+
+Si elegimos al Sol como $M_2 = 1$ unidad de masa solar y lo colocamos en el origen de las coordenadas $\vec{r}_2 = 0$, queda:
+\[ \vec{F}_{1} = - G \frac{M_1}{R^2} \hat{r}_{1}\]
+
+Finalmente, la fuerza que experimenta el cuerpo celeste debido al Sol se puede esribir como:
+\[ \vec{F}_1 = \left( F_x, F_y\right) \]
+
+\subsection*{c. Muevete(10 pts)}
+Implementar un método llamado "muevete(dt)" que dependa de un $\delta t$. Este método
+desplaza la partícula y calcula el cambio de velocidad según la fuerza experimentada.
+
+\subsection*{d. Evoluciona e imprime (5 pts)}
+
+\begin{itemize}
+    \item Cree un cuerpo celeste llamado Tierra con $x=1$, $y=0$, $v_x=0$, $v_y=6.28$ y 
+$M = 1 / 333000$
+    \item Utilice un intervalo de tiempo $\delta t  = 1 / 365$
+    \item Haga el sistema evolucionar desde $t=0$ hasta $t=.25$ (esto es la cuarta 
+    parte de un año) imprimiendo t, x e y.
+    \item ¿Cuál es la posición final?
+\end{itemize}
+
+\section*{Ejercicio 2 (20 puntos)}
+
+Una vez tenga el ejercicio anterior completo, copielo en un nuevo archivo llamado
+``jercicio02.py''. 
+
+Cree un par de listas de posición $X=$[ ] y posición $Y=$[ ], en estas 
+va a guardar la posición cada vez que ejecute "tierra.muevete(dt)"
+
+Después que el sistema haya terminado de evolucionar, incluya estas líneas en su 
+código para generar una gráfica de la trayectoria.
+
+\begin{lstlisting}[language=Python, caption=Python example]
+import matplotlib.pyplot as plt
+fig = plt.figure(figsize=(5,5))
+plt.plot(X,Y)
+plt.savefig('orbita.png')
+\end{lstlisting}
+
+Con esto se genera un archivo de imágen con el segmento de órbita calculado.
+
+\subsection*{a (10pt)}
+Grafique la trayectoria desde t=0 hasta t = 0.25. Modifique el nombre del arguivo de salida para que no sea reescrito en el siguiente item.
+\subsection*{b (10 pt)}
+Grafique la trayectoria desde t = 0 hasta t = 0.75, Cambie el nombre del archivo de salida.
+
+\section*{Ejercicio 03 (30 pts)}
+Se define en clase.
+
+\section*{Anexo: Estructura del código.}
+Esta puede ser una guía de la estructura del código a implementar para los ejercicios 01 y 02.
+
+
+\begin{lstlisting}[language=Python, caption=Estructura del ejercicio 2.]
+
+#!/usr/bin/python
+
+class CuerpoCeleste:
+    
+    def __init__(self, x0,y0,Vx0, Vy0, M0):
+        # Parte a. Inicia atributos
+        
+    def calculaFuerza(self):
+        # Parte b. Calcula Fuerza (30 pts)
+        G = 39.5
+        M_sun = 1 # Solar Mass
+        
+        R = # Calcular R
+        
+        self.Fx =  # Calcular Fuerza en x
+        self.Fy =  # Calcular Fuerza en y
+            
+    def muevete(self, dt):
+        # Parte c. Muevete (10 pts)
+        
+Tierra = CuerpoCeleste( 1.0, 0.0, 6.28 , 0.0 , 1/333000)
+Tierra.calculaFuerza()
+
+t=0.0
+DeltaT = 1 / 365 # one day
+
+X = []
+Y = []
+
+while t < 0.25 :
+    Tierra.calculaFuerza()
+    Tierra.muevete(DeltaT)
+    t += DeltaT
+    # Ejercicio 2 (X.append(algo), Y.append(algo))
+    
+import matplotlib.pyplot as plt
+
+fig = plt.figure(figsize=(5,5))
+plt.plot(X,Y)
+plt.savefig('orbita.png')
+\end{lstlisting}
+
+\end{document}
+
+opllllllllllllllllllll||ttttttttt+ḱ.vg...-----------------------klllt´´´´´FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFKk-Lol
