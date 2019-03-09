@@ -1,0 +1,149 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{hyperref}
+ 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour}, commentstyle=\color{codegreen}, keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray}, stringstyle=\color{codepurple}, basicstyle=\footnotesize,
+    breakatwhitespace=false, breaklines=true, captionpos=b, keepspaces=true, numbers=left,                    
+    numbersep=5pt, showspaces=false, showstringspaces=false, showtabs=false,tabsize=2
+}
+\lstset{style=mystyle}
+
+\title{Tarea 06}
+\author{fl.gomez10 at uniandes.edu.co}
+%\date{March 2019}
+
+\begin{document}
+
+\maketitle
+
+Horario de atención: Principalmente de 2:00pm a 5:00pm en la oficina i-109. También se pueden enviar dudas al correo electrónico.
+
+Entregar la carpeta de trabajo en un archivo comprimido \texttt{hw06-username.tar} antes de finalizar la clase. 
+
+Trabaje iniciando  sesión en la máquina virtual en línea
+\href{https://mybinder.org/v2/gh/ComputoCienciasUniandes/FISI2026-201910/master?urlpath=lab}{mybinder.org/}
+\footnote{\url{https://mybinder.org/v2/gh/ComputoCienciasUniandes/FISI2026-201910/master?urlpath=lab}}. 
+Aparte, cree un archivo de texto llamado \texttt{bitacora.txt}
+
+
+\section*{Ejercicio 1 (30 puntos) Trabajo en Casa}
+\subsection*{a (10 pts): Módulo Desconocido.}
+
+\begin{itemize}
+    \item Abra un Notebook de Python 3. Guárdelo como \texttt{ejercicio01a.ipynb}
+    \item En la primera celda importe el paquete \texttt{imageio}.
+    \item Ejecute la celda con \texttt{shift + enter}
+    \item ¿Qué resultado arroja la ejecución de esta celda? Guarde la salida (Esta puede ser una advertencia o un error) en la bitácora.
+    \item Guarde este notebook. \texttt{ctrl + s}
+\end{itemize}
+
+\subsection*{b (20 pts): Instalación de un Módulo con PIP}
+\begin{itemize}
+    \item Cierre el notebook anterior. Abra una terminal e instale con el comando \texttt{pip} el paquete \texttt{imageio}, del mismo modo que en el \href{https://www.youtube.com/watch?v=IpyG-1Ied3w&list=PLHQtzvthdVM_MGC9dPFKe4hPAwBd_7RJ3&index=10&t=248s}{vídeo (minuto 4:08)} se instala \texttt{jupyter}. 
+    \item Guarde en la bitácora la información que arroja el proceso de instalación.
+    \item Abra un Notebook de Python 3.
+    \item En la primera celda importe el paquete \texttt{imageio}.
+    \item Ejecute la celda con \texttt{shift + enter}
+    \item ¿Qué resultado arroja la ejecución de esta celda? Guarde la salida (Esta puede ser una advertencia o un error) en la bitácora. Comente este resultado.
+    \item Guarde este notebook como \texttt{ejercicio01b.ipynb}
+\end{itemize}
+
+\section*{Ejercicio 2 (40 puntos) Trabajo en Casa}
+
+\subsection*{a (10 pts)}
+Guarde el siguiente código en un archivo llamado \texttt{grafica\_cos.py}.
+
+\begin{lstlisting}[language=Python, caption=grafica-cos.py]
+import matplotlib.pyplot as plt
+import math
+
+t = 0
+n = 0
+
+A = list( range(0,100))
+x = []
+for elemento in A:
+    x.append( t + elemento * 2 * 3.1416 / 100 )
+
+y = []
+for elemento in x:
+    y.append( math.cos(elemento))
+    
+plt.subplot(111)
+plt.axis("equal")
+plt.plot(x,y)    
+plt.title('t = {}'.format(t))
+plt.savefig('{}.png'.format(n))
+plt.close()
+\end{lstlisting}
+
+Este código genera cien números igualmente espaciados entre 0 y $2 \pi$, le suma un número ``t'', luego calcula $y = \cos(x+t)$, grafica y guarda como \texttt{n.png}.
+
+\begin{itemize}
+    \item Corra el código una vez para comprobar su funcionamiento.
+    \item Cambie $t$ y $n$ (entero) para comprobar su funcionamiento.
+    \item Modifique el código para que sea una función que tenga dos argumentos de entrada: $t$ y $n$. Con esto, al llamar la \texttt{funcion(t,n)} esta genera la gráfica y la guarda.
+    \item Guarde este archivo.
+\end{itemize}
+
+\subsection*{b (20 pts)}
+Cree un nuevo Notebook llamado \texttt{ejercicio02b.ipynb}.
+
+\begin{itemize}
+    \item Importe el módulo \texttt{grafica\_cos} que creó en el numeral anterior. \footnote{Pilas con el nombre del módulo. Si lo llaman ``grafica-cos'' el programa entenderá que hay que realizar una resta ``grafica'' menos ``cos''. }
+    \item Llame la función que creó en el numeral anterior para comprobar que funciona.
+    \item Inicie un contador $n=0$, la variable $t=0$ y un paso de tiempo 
+    \texttt{DeltaT=0.2}
+    \item Cree un ciclo while que termine cuando $t >6.29$
+    \item en este ciclo llame la función que grafica con los argumentos t y n.
+    \item aumente t += deltat.
+    \item aumente n += 1
+\end{itemize}
+ 
+Ejecute la celda. Esto debería generar cerca de 30 archivos de imágen. Guarde el Notebook.
+
+\subsection*{c (10 pts)}
+
+En este ejercicio se va a hacer una ``película.gif'' con las imágenes que se crearon en el numeral anterior.
+
+\begin{itemize}
+    \item Cree un nuevo notebook llamado \texttt{ejercicio02c.ipynb}.
+    \item Cree una lista con los nombres de las imágenes como strings. Llámela  \texttt{filenames}.
+    \item Use una estructura de código similar a la propuesta para que el módulo \texttt{imageio} genere un nuevo archivo apilando las imágenes.
+\end{itemize}
+
+
+
+
+\begin{lstlisting}[language=Python, caption=ejercicio02x.ipynb]
+import imageio
+
+filenames = []  ## Lista con los nombres de los archivos
+
+with imageio.get_writer('pelicula.gif', mode='I') as writer:
+    for filename in filenames:
+        image = imageio.imread(filename)
+        writer.append_data(image)
+\end{lstlisting}
+
+\section*{Ejercicio 3 (En Clase)}
+Este ejercicio se define en clase.
+
+\end{document}
