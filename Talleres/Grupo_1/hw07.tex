@@ -1,0 +1,114 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{hyperref}
+ 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour}, commentstyle=\color{codegreen}, keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray}, stringstyle=\color{codepurple}, basicstyle=\footnotesize,
+    breakatwhitespace=false, breaklines=true, captionpos=b, keepspaces=true, numbers=left,                    
+    numbersep=5pt, showspaces=false, showstringspaces=false, showtabs=false,tabsize=2
+}
+\lstset{style=mystyle}
+
+\title{Tarea 07}
+\author{fl.gomez10 at uniandes.edu.co}
+%\date{March 2019}
+
+\begin{document}
+
+\maketitle
+
+Horario de atención: Principalmente de 2:00pm a 5:00pm en la oficina i-109. También se pueden enviar dudas al correo electrónico.
+
+Entregar la carpeta de trabajo en un archivo comprimido \texttt{hw07-username.tar} antes de finalizar la clase. 
+
+Trabaje iniciando  sesión en la máquina virtual en línea
+\href{https://mybinder.org/v2/gh/ComputoCienciasUniandes/FISI2026-201910/master?urlpath=lab}{mybinder.org/}
+\footnote{\url{https://mybinder.org/v2/gh/ComputoCienciasUniandes/FISI2026-201910/master?urlpath=lab}}. 
+Aparte, cree un archivo de texto llamado \texttt{bitacora.txt}
+
+
+\section{Ejercicio 1 (30 puntos) Trabajo en Casa}
+
+Cree un notebook llamado \texttt{ejercicio01.ipynb}. En la primera celda puede incluir
+\texttt{\%pylab inline} para cargar \texttt{numpy} y \texttt{matplotlib} de una vez.
+
+\subsection{A (6pts)}
+Graficar la función coseno 
+\begin{itemize}
+\item (2 pts) Cree un array unidimensional \texttt{a} que tenga 30 números desde $-2\pi$ hasta
+  $2\pi$ igualmente distanciados usando \texttt{np.linspace()}
+\item (2 pts) Cree un array unidimensional \texttt{b} que sea el coseno de \texttt{a}.
+  Créelo directamente operando sobre el array \texttt{a} como un todo, no elemento por
+  elemento.
+\item (2 pts) Grafique \texttt{b} vs. \texttt{a}.
+\end{itemize}
+
+\subsection{B (14 pts)}
+Crear un array de $8 \times 8$ que tenga el patrón del tablero de ajedréz.
+
+\begin{itemize}
+\item (2pts) Cree un array de ceros de $8 \times 8$ usando \texttt{np.zeros()}.
+\item (4pts) Con un doble \texttt{for} (uno para barrer filas y otro para barrer columnas),
+  recorra el array y coloque unos cada tanto siguiendo el patrón del tablero de ajedréz
+  intercalando unos y ceros en ambos ejes (0 y 1).
+\item (4pts) Grafique usando \texttt{plt.imshow}.
+\item (4pts) Cree e imprima un array de $8 \times 8 \times 4$ con un patrón de ajedréz 3D. Esto es,
+  si uno se desplaza en cualquier eje (0, 1 o 2) va a encontrar intercalados unos y ceros.
+\end{itemize}
+
+\subsection{C (10 pts)}
+Cree una variable $N=4$.
+Cree un array de $N \times N$ donde la matriz diagonal superior sean ceros, la diagonal
+sean unos y la matriz diagonal inferior se llene incrementando del siguiente modo:
+\begin{equation}
+  \begin{array}{cccc}
+    1 & 0 & 0 & 0 \\
+    2 & 1 & 0 & 0 \\
+    3 & 4 & 1 & 0 \\
+    5 & 6 & 7 & 1
+  \end{array}  
+\end{equation}
+Debe funcionar bien para los casos $N=0, 1, ..., 10$. Con esto se calificará. (10 pts).
+Puede empezar creando un array de ceros usando \texttt{np.zeros()}
+
+\subsection{Ejercicio 2 (30 pts)}
+En un notebook llamado \texttt{ejercicio02.ipynb} copie el siguiente fragmento de código.
+
+\begin{lstlisting}[language=Python, caption=grafica-cos.py]
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+import numpy as np
+
+img=mpimg.imread('https://github.com/ComputoCienciasUniandes/FISI2026-201910/raw/master/Talleres/Grupo_1/sorpresa_hubble.png')
+
+imgplot = plt.imshow(img)
+\end{lstlisting}
+
+\begin{itemize}
+\item (10 pts) Escriba en una celda la forma (shape) de \texttt{img}.
+  ¿Es un solo array? ¿Son varias capas? ¿Qué representa cada capa?
+\item (10 pts) Cree una variable $k>2.0$. Con esta cree un nuevo array
+  de la forma \texttt{img**k}. Grafique con \texttt{plt.imshow()}.
+  En otra celda indique qué tipo de operación se está realizando.
+\item (10 pts) Aumente el valor de \texttt{k} hasta poder ver claramente la
+  imágen. ¿Cuál es el valor crítico de ``k'' que le permite ver el resultado?
+\end{itemize}
+Guarde el notebook con el resultado.
+
+\end{document}
