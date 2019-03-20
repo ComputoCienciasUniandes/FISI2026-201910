@@ -87,7 +87,7 @@ sean unos y la matriz diagonal inferior se llene incrementando del siguiente mod
 Debe funcionar bien para los casos $N=0, 1, ..., 10$. Con esto se calificará. (10 pts).
 Puede empezar creando un array de ceros usando \texttt{np.zeros()}
 
-\subsection{Ejercicio 2 (30 pts)}
+\section{Ejercicio 2 (30 pts)}
 En un notebook llamado \texttt{ejercicio02.ipynb} copie el siguiente fragmento de código.
 
 \begin{lstlisting}[language=Python, caption=grafica-cos.py]
@@ -110,5 +110,31 @@ imgplot = plt.imshow(img)
   imágen. ¿Cuál es el valor crítico de ``k'' que le permite ver el resultado?
 \end{itemize}
 Guarde el notebook con el resultado.
+
+\section{Ejercicio 03 (40 pts) El Juego de la Vida de Conway}
+
+Cada celda puede estar viva o muerta. Este será el estado de la celda. Cada celda tiene ocho celdas vecinas.
+
+Todas las celdas evolucionan al mismo tiempo según tres reglas:
+
+Una celda viva con 2 o 3 celdas vecinas vivas sigue viva.
+Una celda muerta con exactamente 3 celdas vecinas vivas se convierte en una celda viva.
+En los demás casos las celdas mueren o siguen muertas.
+
+\begin{itemize}
+\item (20 pts) Cree un array de ceros de $10 \times 10$. Defina una función
+  que haga evolucionar el sistema según las reglas de Conway.
+  Pruebe con
+  \begin{lstlisting}[language=Python, caption=Array de prueba.]
+A[3,3] = 1
+A[3,4] = 1
+A[3,5] = 1
+
+A[6,6] = 1
+  \end{lstlisting}
+  y déjelo evolucionar durante 10 ciclos.
+\item (10 pts) Ahora extienda el sistema a un array de $20\times20$, inicie aleatoriamente con una probabilidad p=0.4 de obtener un uno.
+\item (10 pts) Deje evolucionar el sistema por 40 ciclos. 
+\end{itemize}
 
 \end{document}
