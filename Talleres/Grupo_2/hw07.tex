@@ -87,7 +87,7 @@ sean unos y la matriz diagonal inferior se llene incrementando del siguiente mod
 Debe funcionar bien para los casos $N=0, 1, ..., 10$. Con esto se calificará. (10 pts).
 Puede empezar creando un array de ceros usando \texttt{np.zeros()}
 
-\subsection{Ejercicio 2 (30 pts)}
+\section{Ejercicio 2 (30 pts)}
 En un notebook llamado \texttt{ejercicio02.ipynb} copie el siguiente fragmento de código.
 
 \begin{lstlisting}[language=Python, caption=grafica-cos.py]
@@ -110,5 +110,39 @@ imgplot = plt.imshow(img)
   imágen. ¿Cuál es el valor crítico de ``k'' que le permite ver el resultado?
 \end{itemize}
 Guarde el notebook con el resultado.
+
+
+\section{Ejercicio 3 (40 pts) Suavizado de imágenes}
+
+Este ejercicio es una breve introducción al procesamiento de imágenes
+desde un Jupyter Notebook.
+Se quiere suavizar una imágen (en escala de grises). Se puede trabajar con 
+la imágen de wikipedia
+\footnote{\url{https://upload.wikimedia.org/wikipedia/commons/f/fa/Grayscale_8bits_palette_sample_image.png}} 
+o con esta versión de la 
+\href{https://github.com/ComputoCienciasUniandes/FISI2026-201910/raw/master/Talleres/Grupo_2/grayscale_w_noise.png}{imagen con ruido}
+\footnote{\url{https://github.com/ComputoCienciasUniandes/FISI2026-201910/raw/master/Talleres/Grupo_2/grayscale_w_noise.png}}.
+
+Puede iniciar el notebook con:
+\begin{lstlisting}[language=Python]
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimage
+import numpy as np
+
+image = mpimage.imread("https://github.com/ComputoCienciasUniandes/FISI2026-201910/raw/master/Talleres/Grupo_2/grayscale_w_noise.png")
+plt.imshow(image)
+\end{lstlisting}
+
+El algoritmo debe funcionar de este modo:
+\begin{itemize}
+\item Se genera un nuevo array de ceros del mismo tamaño que la imágen original.
+\item Para un píxel en la posición $[i,j]$ se suma la intensidad de sus ocho vecinos cercanos. 
+\item (10 pts) Se promedia junto con la intensidad del píxel en cuestión.
+\item (10 pts) El resultado se almacena en la posición ${i,j}$ del nuevo array.
+\item (10 pts) Se barren las filas y las columnas. Se pueden omitir la primera y la última, o se
+  puede escribir el algoritmo para que calcule de forma distinta el promedio en las celdas
+  de los bordes y las esquinas.
+\item (10 pts) Graficar con \texttt{imshow} la imágen original y el nuevo array.
+\end{itemize}
 
 \end{document}
