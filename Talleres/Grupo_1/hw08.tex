@@ -1,0 +1,132 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{hyperref}
+ 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour}, commentstyle=\color{codegreen}, keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray}, stringstyle=\color{codepurple}, basicstyle=\footnotesize,
+    breakatwhitespace=false, breaklines=true, captionpos=b, keepspaces=true, numbers=left,                    
+    numbersep=5pt, showspaces=false, showstringspaces=false, showtabs=false,tabsize=2
+}
+\lstset{style=mystyle}
+
+\title{Tarea 08}
+\author{fl.gomez10 at uniandes.edu.co}
+%\date{March 2019}
+
+\begin{document}
+
+\maketitle
+
+Horario de atención: Principalmente de 2:00pm a 5:00pm en la oficina i-109.
+También se pueden enviar dudas al correo electrónico.
+Entregar la carpeta de trabajo en un archivo comprimido \texttt{hw08-username.tar}
+antes de finalizar la clase. 
+
+Trabaje iniciando  sesión en la máquina virtual en línea
+\href{https://mybinder.org/v2/gh/ComputoCienciasUniandes/FISI2026-201910/master?urlpath=lab}{mybinder.org/}
+\footnote{\url{https://mybinder.org/v2/gh/ComputoCienciasUniandes/FISI2026-201910/master?urlpath=lab}}. 
+
+
+\section{Ejercicio 1 (30 puntos) Trabajo en Casa - Plot \& Scatter}
+
+Trabaje en el notebook ``ejercicio01.ipynb''.
+
+\begin{itemize}
+\item Genere un linspace ``t''.
+
+\item Grafique \texttt{plt.plot(t, np.cos(t))}
+  
+\item (24 pts) En una sola celda se van a generar seis gráficos con el siguiente snippet:
+\begin{lstlisting}[language=Python]
+f = plt.figure(figsize=(10,10))
+ax1 = f.add_subplot(321)
+ax2 = f.add_subplot(322)
+ax3 = f.add_subplot(323)
+ax4 = f.add_subplot(324)
+ax5 = f.add_subplot(325)
+ax6 = f.add_subplot(326)
+
+ax1.plot(t, np.cos(t))
+ax2.plot(t, np.sin(t))
+ax3.plot(np.cos(t), np.sin(t))
+ax4.scatter(t, np.cos(t))
+ax5.scatter(t, np.sin(t))
+ax6.scatter(np.cos(t), np.sin(t))
+\end{lstlisting}
+\item (2 pts) En una nueva celda cambie los parámetros de \texttt{figsize} y grafique de nuevo.
+\item (2 pts) En una nueva celda cambie todos los $n$ subplots a \texttt{axn = f.add\_subplot(33n)}
+  (de 32n a 33n), excepto el último, déjelo como \texttt{ax6 = f.add\_subplot(329)}
+\item (2 pts) Cambie todos los $n$ subplots a \texttt{axn = f.add\_subplot(24n)}
+(de 32n a 24n), excepto el primero, déjelo como \texttt{ax1 = f.add\_subplot(247)}
+\end{itemize}
+
+\section{Ejercicio 2 (30 puntos) Trabajo en Casa - Scatter 3D}
+
+Inicie el notebook ``ejercicio02.ipynb'' con:
+\begin{lstlisting}[language=Python]
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+\end{lstlisting}
+
+\begin{itemize}
+
+\item Genere un par de arrays $s, t$  tipo \texttt{linspace} desde cero hasta $2\pi$
+
+\item Con estos, genere un par de arrays $x$ e $y$ usando \texttt{meshgrid} como:
+\begin{lstlisting}[language=Python]
+x, y = np.meshgrid(s,t)
+\end{lstlisting}
+
+\item Escriba una función
+  \begin{equation}
+    f(x,y) =  e^{-x/\pi}  \cos x \sin y
+  \end{equation}
+\item Con la función genere un array $z = f(x,y)$
+
+\item (10 pts) Imprima la forma (\texttt{shape}) de los arrays $s, t, x, y, z$.
+  Explique que hace la función \texttt{meshgrid}.
+  
+  
+\item (20 pts) Genere una gráfica con:
+\begin{lstlisting}[language=Python]
+fig = plt.figure()
+ax = fig.add_subplot(111, projection="3d")
+
+ax.scatter(x, y, z)
+
+ax.set_xlabel("X Label")
+ax.set_ylabel("Y Label")
+ax.set_zlabel("Z Label")
+
+plt.show()
+\end{lstlisting}
+\end{itemize}
+
+
+
+\section{Ejercicio 03 - Plot Surface (3D) \& Plot Color Mesh (2D)}
+
+\subsection{A (20 pts)}
+Genere una gráfica 3D con \texttt{ax.plot\_surface(x, y, z)} con los mismos arrays $x$ e $y$ del ejercicio 2.
+\subsection{B (20 pts)}
+Genere una gráfica 2D con \texttt{ax.pcolormesh(x, y, z)} con los mismos arrays $x$ e $y$ del ejercicio 2.
+Use \texttt{ax = fig.add\_subplot(111)} sin el argumento \texttt{projection="3d"}.
+
+\end{document}
