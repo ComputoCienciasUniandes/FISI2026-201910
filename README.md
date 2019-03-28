@@ -3,7 +3,7 @@ Curso de Herramientas Computacionales - Primer Semestre 2019
 
 
 
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/ComputoCienciasUniandes/FISI2026-201910/master?urlpath=lab)
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/ComputoCienciasUniandes/FISI2026-201910/master)
 
 Material del curso de Herramientas Computacionales de Uniandes
 
