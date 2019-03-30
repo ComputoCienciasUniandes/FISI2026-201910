@@ -1,0 +1,134 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{hyperref}
+ 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour}, commentstyle=\color{codegreen}, keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray}, stringstyle=\color{codepurple}, basicstyle=\footnotesize,
+    breakatwhitespace=false, breaklines=true, captionpos=b, keepspaces=true, numbers=left,                    
+    numbersep=5pt, showspaces=false, showstringspaces=false, showtabs=false,tabsize=2
+}
+\lstset{style=mystyle}
+
+\title{Tarea 08}
+\author{fl.gomez10 at uniandes.edu.co}
+%\date{March 2019}
+
+\begin{document}
+
+\maketitle
+
+Horario de atención: Principalmente de 2:00pm a 5:00pm en la oficina i-109.
+También se pueden enviar dudas al correo electrónico.
+Entregar la carpeta de trabajo en un archivo comprimido \texttt{hw09-username.tar}
+antes de finalizar la clase. 
+
+Trabaje iniciando  sesión en la máquina virtual en línea
+\href{https://mybinder.org/v2/gh/ComputoCienciasUniandes/FISI2026-201910/master?urlpath=lab}{mybinder.org/}
+\footnote{\url{https://mybinder.org/v2/gh/ComputoCienciasUniandes/FISI2026-201910/master?urlpath=lab}}. 
+
+
+\section{Ejercicio 1 (60 puntos) Trabajo en Casa - Ceros de las funciones de Bessel}
+
+Las funciones de Bessel
+\footnote{Pueden echarle una ojeada a Wikipedia en \url{https://en.wikipedia.org/wiki/Bessel_function}}
+son muy importantes en física para describir problemas con simetría
+axial. Pueden describir la forma de una membrana de un tambor cuando suena, el potencial
+eléctrico dentro de cavidades cilíndricas por mencionar algunos problemas físicos.
+En este ejercicio utilizaremos una librería que calcula las funciones de Bessel.
+Esta tarea está fuertemente basada en el vídeo 12.
+
+\subsection{Importando la librería SciPy (10 pts)}
+Esta librería tiene herramientas de alto turmequé en física. Vamos a invocar la función de
+Bessel $J_\nu(x)$. Inicie un nuevo notebook con el botón a la derecha (new $\rightarrow$ Python3).
+En la primera celda importe numpy, matplotlib.plt y scipy.special
+
+\begin{lstlisting}[language=Python]
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy.special as sp
+\end{lstlisting}
+
+En la segunda celda un array tipo linspace $x$ entre 0 y 20.
+Genere un segundo array $y=J_\nu(x)$, con $\nu = 1$.
+\begin{lstlisting}[language=Python]
+x = np.linspace(0,20)
+y = sp.jv(1,x)
+\end{lstlisting}
+
+Grafique en la tercera celda $x$ vs $y$.
+\begin{lstlisting}[language=Python]
+plt.title(Funcion de Bessel de primer orden)
+plt.plot(x,y)
+plt.grid(True)
+plt.axhline(y=0, color="black")
+plt.axvline(x=0, color="black")
+\end{lstlisting}
+
+\subsection{Buscando ceros por barrido (25 pts)}
+Implemente un algoritmo para buscar ceros a través de cambio de signo
+en la función mientras se hace barrido en $x$ desde cero hasta veinte.
+OMITIR $x=0$.
+
+\begin{itemize}
+\item El algoritmo debe barrer el dominio de $x$ en pequeños pasos pequeños.
+\item El algoritmo debe decir si encuentra ceros a partir del cambio de
+  signo de la función
+\item El algoritmo debe encontrar los ceros con un error no mayor a 0.01
+\end{itemize}
+Preferiblemente, que no sea una copia del código en el vídeo. Entienda
+el método y escriba su propia versión.
+
+\subsection{Buscando ceros por bisección (25 pts)}
+OMITIR $x=0$.
+\begin{itemize}
+\item El algoritmo puede empezar a buscar cerca (a 0.5 unidades) de los
+  ceros que encontró en el punto anterior.
+\item El algoritmo debe dividir el rango entre dos partes, e identificar
+  en qué momento cambia la función de signo para aceptar el rango
+  donde se hace el cambio de signo y rechazar el dominio donde no
+  cambió la función de signo. Esta parte debe ser repetirse hasta
+  encontrar el cero dentro del error propuesto (0.0001)
+  $|f(x)| < 0.0001$
+\item El algoritmo debe encontrar los ceros que encontró en el punto
+  anterior.
+\item El algoritmo debe reportar cuántqs iteraciones requiere para
+  encontrar cada uno de los ceros en el dominio.
+\end{itemize}
+Preferiblemente, que no sea una copia del código en el vídeo. Entienda
+el método y escriba su propia versión.
+
+\section{Ejercicio 2: Método de Newton-Raphson. (40 pts) Trabajo en Clase}
+
+Escribir un algoritmo que busque los ceros de la función de Bessel
+$J_1(x)$ entre 0 y 20. OMITIR $x=0$.
+
+\begin{itemize}
+\item El algoritmo debe utilizar los mismos puntos de partida que en el
+  punto anterior, cercanos a los ceros.
+\item El algoritmo debe calcular la derivada de la función en el punto
+\item A partir de la derivada, debe buscar el intersecto de la recta tangente
+  al punto donde se calculó la derivada.
+\item Una vez se tiene el intersecto, se evalúa la función, se repite el
+  procedimiento hasta que el error sea inferior a 0.0001.
+  $|f(x)| < 0.0001$
+\item Indicar cuántas iteraciones se requieren para que este método
+  encuentre cada uno de los ceros.
+\end{itemize}
+
+\end{document}
