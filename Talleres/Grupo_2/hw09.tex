@@ -84,8 +84,7 @@ plt.axvline(x=0, color="black")
 
 \subsection{Buscando ceros por barrido (25 pts)}
 Implemente un algoritmo para buscar ceros a través de cambio de signo
-en la función mientras se hace barrido en $x$ desde cero hasta veinte.
-OMITIR $x=0$.
+en la función mientras se hace barrido en $x$ desde -1 hasta 1.
 
 \begin{itemize}
 \item El algoritmo debe barrer el dominio de $x$ en pequeños pasos pequeños.
@@ -100,7 +99,7 @@ el método y escriba su propia versión.
 \begin{itemize}
 \item El algoritmo buscará en todos los ceros que encontró en el punto anterior.
 \item Si se tiene un cero en $x_0$, el algoritmo  puede empezar a buscar
-  dentro de un rango $(x_0 - 0.5 , x_0 + 0.5)$
+  dentro de un rango $(x_0 - 0.05 , x_0 + 0.05)$
   alrededor de cada cero que había encontrado.
 \item El algoritmo debe dividir el rango entre dos partes, e identificar
   en qué momento cambia la función de signo para aceptar el rango
