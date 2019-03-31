@@ -43,19 +43,21 @@ Trabaje iniciando  sesión en la máquina virtual en línea
 \footnote{\url{https://mybinder.org/v2/gh/ComputoCienciasUniandes/FISI2026-201910/master?urlpath=lab}}. 
 
 
-\section{Ejercicio 1 (60 puntos) Trabajo en Casa - Ceros de las funciones de Bessel}
+\section{Ejercicio 1 (60 puntos) Trabajo en Casa - Ceros de los Polinomios de Legendre}
 
-Las funciones de Bessel
-\footnote{Pueden echarle una ojeada a Wikipedia en \url{https://en.wikipedia.org/wiki/Bessel_function}}
-son muy importantes en física para describir problemas con simetría
-axial. Pueden describir la forma de una membrana de un tambor cuando suena, el potencial
-eléctrico dentro de cavidades cilíndricas por mencionar algunos problemas físicos.
-En este ejercicio utilizaremos una librería que calcula las funciones de Bessel.
+Los polinomios de Legendre
+\footnote{Pueden echarle una ojeada a Wikipedia en \url{https://en.wikipedia.org/wiki/Legendre_polynomials}}
+son muy importantes en física para describir problemas descritos en coordenadas
+esféricas. Se utilizan en la solución de la función de onda del átomo de Hidrógeno
+en Mecánica Cuántica.
+En este ejercicio utilizaremos una librería que calcula los polinomios de Legendre.
 Esta tarea está fuertemente basada en el vídeo 12.
 
 \subsection{Importando la librería SciPy (10 pts)}
-Esta librería tiene herramientas de alto turmequé en física. Vamos a invocar la función de
-Bessel $J_\nu(x)$. Inicie un nuevo notebook con el botón a la derecha (new $\rightarrow$ Python3).
+Esta librería tiene herramientas de alto turmequé en física.
+Vamos a invocar los polinomios de Legengre $P_m(x)$ con $m=6$.
+
+Inicie un nuevo notebook con el botón a la derecha (new $\rightarrow$ Python3).
 En la primera celda importe numpy, matplotlib.plt y scipy.special
 
 \begin{lstlisting}[language=Python]
@@ -64,16 +66,16 @@ import matplotlib.pyplot as plt
 import scipy.special as sp
 \end{lstlisting}
 
-En la segunda celda un array tipo linspace $x$ entre 0 y 20.
-Genere un segundo array $y=J_\nu(x)$, con $\nu = 1$.
+En la segunda celda un array tipo linspace $x$ entre -1 y 1.
+Genere un segundo array $y=P_m(x)$, con $m = 6$.
 \begin{lstlisting}[language=Python]
-x = np.linspace(0,20)
-y = sp.jv(1,x)
+x = np.linspace(-1,1)
+y = y = sp.eval_legendre(6,x)
 \end{lstlisting}
 
 Grafique en la tercera celda $x$ vs $y$.
 \begin{lstlisting}[language=Python]
-plt.title(Funcion de Bessel de primer orden)
+plt.title(Polinomio de Legendre de orden 6)
 plt.plot(x,y)
 plt.grid(True)
 plt.axhline(y=0, color="black")
@@ -89,27 +91,26 @@ OMITIR $x=0$.
 \item El algoritmo debe barrer el dominio de $x$ en pequeños pasos pequeños.
 \item El algoritmo debe decir si encuentra ceros a partir del cambio de
   signo de la función
-\item El algoritmo debe encontrar los ceros con un error no mayor a 0.2
+\item El algoritmo debe encontrar los ceros con un error no mayor a 0.01
 \end{itemize}
 Preferiblemente, que no sea una copia del código en el vídeo. Entienda
 el método y escriba su propia versión.
 
 \subsection{Buscando ceros por bisección (25 pts)}
-OMITIR $x=0$.
 \begin{itemize}
 \item El algoritmo buscará en todos los ceros que encontró en el punto anterior.
 \item Si se tiene un cero en $x_0$, el algoritmo  puede empezar a buscar
   dentro de un rango $(x_0 - 0.5 , x_0 + 0.5)$
-  alrededor de cada cero que había encontrado.  
+  alrededor de cada cero que había encontrado.
 \item El algoritmo debe dividir el rango entre dos partes, e identificar
   en qué momento cambia la función de signo para aceptar el rango
   donde se hace el cambio de signo y rechazar el dominio donde no
   cambió la función de signo. Esta parte debe ser repetirse hasta
-  encontrar el cero dentro del error propuesto (0.0001)
-  $|f(x)| < 0.0001$
+  encontrar el cero dentro del error propuesto (0.00001)
+  $|f(x)| < 0.00001$
 \item El algoritmo debe encontrar los ceros que encontró en el punto
   anterior.
-\item El algoritmo debe reportar cuántqs iteraciones requiere para
+\item El algoritmo debe reportar cuántas iteraciones requiere para
   encontrar cada uno de los ceros en el dominio.
 \end{itemize}
 Preferiblemente, que no sea una copia del código en el vídeo. Entienda
@@ -117,8 +118,8 @@ el método y escriba su propia versión.
 
 \section{Ejercicio 2: Método de Newton-Raphson. (40 pts) Trabajo en Clase}
 
-Escribir un algoritmo que busque los ceros de la función de Bessel
-$J_1(x)$ entre 0 y 20. OMITIR $x=0$.
+Escribir un algoritmo que busque los ceros del polinomio de Legendre
+de sexto orden $P_6(x)$ entre -1 y 1.
 
 \begin{itemize}
 \item El algoritmo debe utilizar los mismos puntos de partida que en el
@@ -127,8 +128,8 @@ $J_1(x)$ entre 0 y 20. OMITIR $x=0$.
 \item A partir de la derivada, debe buscar el intersecto de la recta tangente
   al punto donde se calculó la derivada.
 \item Una vez se tiene el intersecto, se evalúa la función, se repite el
-  procedimiento hasta que el error sea inferior a 0.0001.
-  $|f(x)| < 0.0001$
+  procedimiento hasta que el error sea inferior a 0.00001.
+  $|f(x)| < 0.00001$
 \item Indicar cuántas iteraciones se requieren para que este método
   encuentre cada uno de los ceros.
 \end{itemize}
