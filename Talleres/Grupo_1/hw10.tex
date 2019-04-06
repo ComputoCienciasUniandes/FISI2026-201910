@@ -1,0 +1,85 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{hyperref}
+ 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour}, commentstyle=\color{codegreen}, keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray}, stringstyle=\color{codepurple}, basicstyle=\footnotesize,
+    breakatwhitespace=false, breaklines=true, captionpos=b, keepspaces=true, numbers=left,                    
+    numbersep=5pt, showspaces=false, showstringspaces=false, showtabs=false,tabsize=2
+}
+\lstset{style=mystyle}
+
+\title{Tarea 10}
+\author{fl.gomez10 at uniandes.edu.co}
+%\date{March 2019}
+
+\begin{document}
+
+\maketitle
+
+Horario de atención: Principalmente de 2:00pm a 5:00pm en la oficina i-109.
+También se pueden enviar dudas al correo electrónico.
+Entregar antes de finalizar la clase. 
+
+Trabaje iniciando  sesión en la máquina virtual en línea
+\href{https://mybinder.org/v2/gh/ComputoCienciasUniandes/FISI2026-201910/master?urlpath=lab}{mybinder.org/}
+\footnote{\url{https://mybinder.org/v2/gh/ComputoCienciasUniandes/FISI2026-201910/master?urlpath=lab}}. 
+
+
+\section{Ejercicio 1 (50 puntos) Trabajo en Casa - Ajuste función con dos exponenciales}
+
+\begin{lstlisting}[language=Python]
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
+
+### Cargar y visualizar datos
+
+data = np.loadtxt("dos_picos_1.dat")
+x = data[:,0]
+y = data[:,1]
+plt.scatter(x,y)
+
+
+### Ajuste de curvas
+
+def f(x, a, b):
+    y = a + b * x
+    return y
+
+curve_fit(f,x,y)
+\end{lstlisting}
+
+El fragmento anterior de código hace un ajuste de una recta al conjunto de datos
+\texttt{dos\_picos\_1.dat}\footnote{\url{https://github.com/ComputoCienciasUniandes/FISI2026-201910/raw/master/Talleres/Grupo_1/dos_picos_1.dat}}, retornando el valor de los parámetros $a$ y $b$.
+
+Modifique el código para que incluya dos curvas gausianas, una
+para el pico hacia arriba y otra para el pico hacia abajo.
+Tenga en cuenta que ambas campanas gaussianas pueden tener
+parámetros diferentes (20 pts).
+
+Muestre los parámetros óptimos (10pts).
+
+Grafique la curva de mejor ajuste junto con los datos originales (20pts).
+
+\section{Ejercicio 2: (50 pts) Trabajo en Clase}
+
+Se define en clase.
+
+\end{document}

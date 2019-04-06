@@ -1,4 +1,4 @@
-N=09
+N=10
 
 all:
 	pdflatex hw$(N).tex
