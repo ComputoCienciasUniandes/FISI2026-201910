@@ -78,8 +78,19 @@ Muestre los parámetros óptimos (10pts).
 
 Grafique la curva de mejor ajuste junto con los datos originales (20pts).
 
-\section{Ejercicio 2: (50 pts) Trabajo en Clase}
+\section{Ejercicio 2: (50 pts) Temperaturas de Munich}
 
-Se define en clase.
+\begin{itemize}
+  \item Descargue el archivo de datos\footnote{\url{https://github.com/ComputoCienciasUniandes/FISI2026-201910/raw/master/Talleres/Grupo_1/munich_temperatures_average_with_bad_data.txt}}
+  \item Grafique los datos de Temperatura ($\odot C$) vs Tiempo (Años)
+  \item Use \texttt{np.where()} para eliminar los datos defectuosos. (Temperaturas ilógicas, que pueden ser error en la toma de datos).
+  \item Grafique de nuevo, sin los datos defectuosos. (10 pts)
+  \item Use una función de la forma:
+    \[ f(t, a, b, c, d) = a \cos ( b t ) + c \sin( d t) \]
+    para ajustarse a los datos.
+  \item Grafique los datos sin puntos defectuosos y la curva de mejor ajuste. (30 pts)
+  \item Indique cuales son los parámetros óptimos de ajuste. (10 pts)
+\end{itemize}
+
 
 \end{document}
