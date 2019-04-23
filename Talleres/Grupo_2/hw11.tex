@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{hyperref}
+ 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour}, commentstyle=\color{codegreen}, keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray}, stringstyle=\color{codepurple}, basicstyle=\footnotesize,
+    breakatwhitespace=false, breaklines=true, captionpos=b, keepspaces=true, numbers=left,                    
+    numbersep=5pt, showspaces=false, showstringspaces=false, showtabs=false,tabsize=2
+}
+\lstset{style=mystyle}
+
+\title{Tarea 11}
+\author{fl.gomez10 at uniandes.edu.co}
+%\date{March 2019}
+
+\begin{document}
+
+\maketitle
+
+Horario de atención: Principalmente de 2:00pm a 5:00pm en la oficina i-109.
+También se pueden enviar dudas al correo electrónico.
+Entregar antes de finalizar la clase. 
+
+Trabaje iniciando  sesión en la máquina virtual en línea
+\href{https://mybinder.org/v2/gh/ComputoCienciasUniandes/FISI2026-201910/master?urlpath=lab}{mybinder.org/}
+\footnote{\url{https://mybinder.org/v2/gh/ComputoCienciasUniandes/FISI2026-201910/master?urlpath=lab}}. 
+
+
+\section{Ejercicio 1 (20 puntos) Trabajo en Casa - Generar y graficar una distribución de datos Gaussiana (o Normal)}
+
+Vamos a estudiar cómo el tamaño de una muestra afecta lo que vemos de una población.
+
+En un notebook llamado \texttt{hw11.ipynb} genere un conjunto de datos
+llamado ``data'' de n=10 datos distribuidos aleatoriamente según
+la distribución normal (\texttt{np.random.norm(loc=3.0, scale=1.5, size=n)}),
+centrados en 3.0, con un ancho de 1.5.
+
+\begin{itemize}
+\item Generar un histograma de los datos con 10, otro con 20
+  y otro con 30 columnas usando la opción (bins=10) de la
+  función \texttt{plt.hist()}.
+\item calcular la media de ``data'' usando \texttt{np.mean(data)}
+\item calcular la mediana de ``data'' usando \texttt{np.median(data)}
+\item En una celda responda lo siguiente ¿Son cercanas la media y la mediana?
+\item ¿Esperaría que fueran iguales la media y la mediana? ¿Por qué?
+\end{itemize}
+
+\section{Ejercicio 2 (20 puntos) Trabajo en Casa - Más gaussianas.}
+
+Repita para n = {100, 1000, 10000, 100000}
+
+\section{Ejercicio 3 (40 puntos) En Clase}
+
+
+
+\end{document}
