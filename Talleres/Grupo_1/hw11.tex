@@ -65,8 +65,32 @@ centrados en 3.0, con un ancho de 1.5.
 
 Repita para n = {100, 1000, 10000, 100000}
 
-\section{Ejercicio 3 (40 puntos) En Clase}
+\section{Ejercicio 3 (20 puntos) Ajuste de curvas}
+
+Vamos a trabajar con este conjunto de datos \texttt{some\_statistical\_stuff.dat}\footnote{\url{https://raw.githubusercontent.com/ComputoCienciasUniandes/FISI2026-201910/master/Talleres/Grupo_1/some_statistical_stuff.dat}}
+
+Escriba esta función de distribución de probabilidad normalizada:
+\begin{equation}
+  f(x,\mu,\sigma) = \frac{1}{\sqrt{2 \pi} \sigma} e^{-(x-\mu)^2/(2\sigma^2)}
+\end{equation}
+
+Utilizando \texttt{scipy.optimize.curve\_fit} busque los parámetros óptimos
+y grafique la función con los parámetros de mejor ajuste.
 
 
+\section{Ejercicio 4 (40 puntos) Ajuste de curvas}
+
+Escriba esta función de distribución de probabilidad normalizada:
+\begin{equation}
+  g(k,\lambda) = \frac{\lambda^k e^{-\lambda}}{k!}
+\end{equation}
+
+Esta función acepta sólamente un argumento de entrada entero $k$. Así
+que se puede utilizar \texttt{bins[:-1]} como k. Puede ser útil \texttt{scipy.special.factorial}.
+
+\bigskip
+
+Utilizando \texttt{scipy.optimize.curve\_fit} busque los parámetros óptimos
+y grafique la función con los parámetros de mejor ajuste.
 
 \end{document}
