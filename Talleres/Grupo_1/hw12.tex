@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{hyperref}
+ 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour}, commentstyle=\color{codegreen}, keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray}, stringstyle=\color{codepurple}, basicstyle=\footnotesize,
+    breakatwhitespace=false, breaklines=true, captionpos=b, keepspaces=true, numbers=left,                    
+    numbersep=5pt, showspaces=false, showstringspaces=false, showtabs=false,tabsize=2
+}
+\lstset{style=mystyle}
+
+\title{Tarea 12}
+\author{fl.gomez10 at uniandes.edu.co}
+%\date{March 2019}
+
+\begin{document}
+
+\maketitle
+
+Horario de atención: Principalmente de 2:00pm a 5:00pm en la oficina i-109.
+También se pueden enviar dudas al correo electrónico.
+Entregar antes de finalizar la clase. 
+
+Trabaje iniciando  sesión en la máquina virtual en línea
+\href{https://mybinder.org/v2/gh/ComputoCienciasUniandes/FISI2026-201910/master?urlpath=lab}{mybinder.org/}
+\footnote{\url{https://mybinder.org/v2/gh/ComputoCienciasUniandes/FISI2026-201910/master?urlpath=lab}}. 
+
+
+\section{Ejercicio 1 (40 puntos) Trabajo en Casa - Integrar una función bidimensional con método Monte Carlo.}
+
+Se tiene la función:
+\begin{equation}
+  f(x,y) = \cos\left(\pi x \right) e^{-(x^2 + y^2)/(2\pi^2)} + 5
+\end{equation}
+
+\begin{itemize}
+\item (10 pts) Use \texttt{scipy.integrate.dblquad} para integrar. Este será nuestro valor de referencia.
+\item (30 pts) Evaluar la integral en $x \in(-5,5)$ e $y \in (-3,3)$ usando un método Monte Carlo de integración.
+  Ajuste su método para tener un error absoluto inferior al $2\%$ respecto al valor de referencia.
+\end{itemize}
+
+\section{Ejercicio 2 (60 puntos) Definido En Clase}
+
+
+\end{document}
